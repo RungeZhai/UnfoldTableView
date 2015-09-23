@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-extern CGFloat kAnimationDuration;
+extern CGFloat kUnfoldAnimationDuration;
 
 @interface UnfoldTableViewCell : UITableViewCell
 

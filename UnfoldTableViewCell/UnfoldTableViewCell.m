@@ -8,7 +8,7 @@
 
 #import "UnfoldTableViewCell.h"
 
-CGFloat kAnimationDuration = .2;
+CGFloat kUnfoldAnimationDuration = .2;
 
 static dispatch_semaphore_t animationSemaphore;
 
@@ -43,10 +43,10 @@ static dispatch_semaphore_t animationSemaphore;
     // 2. make scene perspective
     transform.m34 = -1 / perspectiveD;
     
-    // 3. move towards eye, otherwise the layer we rotated will be hidden by other layers behind it
+    // 3. move towards the eye, otherwise the layer we rotated will be hidden by other layers behind it
     transform = CATransform3DTranslate(transform, 0, 0, offset);
     
-    // 4. make it proportionally smaller as it is enlarged by moving towards eye
+    // 4. make it proportionally smaller as it is enlarged by moving towards the eye
     transform = CATransform3DScale(transform, scale, scale, 1);
     
     // 5. rotate to make unfold effect when rotating back
@@ -68,7 +68,7 @@ static dispatch_semaphore_t animationSemaphore;
              *  which is visually the same as the original scene, and then set the transform
              *  back to CATransform3DIdentity once the animation has completed.
              */
-            [UIView animateWithDuration:kAnimationDuration
+            [UIView animateWithDuration:kUnfoldAnimationDuration
                              animations:^{
                                  layer.transform = transform;
                                  shadow.backgroundColor = [UIColor clearColor];
